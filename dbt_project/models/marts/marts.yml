@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: fct_complaints
+    description: >
+      Fact table with one row per complaint. The primary analytics
+      table for dashboards and ad-hoc analysis.
+    columns:
+      - name: complaint_id
+        description: "Primary key."
+        tests:
+          - unique
+          - not_null
+      - name: company
+        tests:
+          - not_null
+      - name: product
+        tests:
+          - not_null
+      - name: date_received
+        tests:
+          - not_null
+
+  - name: dim_companies
+    description: >
+      Company dimension with lifetime summary statistics.
+      One row per company — ideal for side-by-side comparisons
+      of how target employers handle consumer complaints.
+    columns:
+      - name: company
+        description: "Primary key — company name."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: >
+      Product dimension with aggregate patterns per
+      product/sub-product combination.
+    columns:
+      - name: product
+        tests:
+          - not_null
+
+  - name: rpt_company_scorecard
+    description: >
+      Interview-ready scorecard comparing target companies
+      on complaint KPIs. Includes lifetime metrics,
+      trailing-12-month performance, and trend indicators.
+    columns:
+      - name: company
+        tests:
+          - unique
+          - not_null

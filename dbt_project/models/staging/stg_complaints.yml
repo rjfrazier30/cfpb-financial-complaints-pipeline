@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_complaints
+    description: >
+      Cleaned and standardized CFPB consumer complaints.
+      Types are explicitly cast, booleans standardized,
+      and a response-time metric (days_to_forward) is calculated.
+    columns:
+      - name: complaint_id
+        description: "Primary key — unique CFPB complaint ID."
+        tests:
+          - unique
+          - not_null
+      - name: product
+        description: "Standardized financial product category (uppercase)."
+        tests:
+          - not_null
+      - name: company
+        description: "Standardized company name (uppercase)."
+        tests:
+          - not_null
+      - name: is_timely_response
+        description: "Whether the company responded within the regulatory timeframe."
+      - name: is_consumer_disputed
+        description: "Whether the consumer disputed the company's response."

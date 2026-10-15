@@ -1,0 +1,29 @@
+# Copy this file to ~/.dbt/profiles.yml and fill in your credentials
+# NEVER commit the real profiles.yml to git
+
+cfpb_complaints:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: SYSADMIN
+      database: CFPB_ANALYTICS
+      warehouse: CFPB_WH
+      schema: DEV
+      threads: 4
+      client_session_keep_alive: False
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: SYSADMIN
+      database: CFPB_ANALYTICS
+      warehouse: CFPB_WH
+      schema: ANALYTICS
+      threads: 4
+      client_session_keep_alive: False

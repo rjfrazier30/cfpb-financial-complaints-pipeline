@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CFPB_ANALYTICS
+    schema: RAW
+    description: "Raw CFPB complaint data loaded by the Python ingestion script."
+    tables:
+      - name: raw_complaints
+        description: "Consumer complaints filed against financial companies via the CFPB."
+        columns:
+          - name: complaint_id
+            description: "Unique CFPB complaint identifier."
+            tests:
+              - unique
+              - not_null
+          - name: date_received
+            description: "Date the CFPB received the complaint."
+            tests:
+              - not_null
+          - name: company
+            description: "Name of the financial company the complaint is filed against."
+            tests:
+              - not_null

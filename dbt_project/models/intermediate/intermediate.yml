@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: int_company_complaint_metrics
+    description: >
+      Monthly complaint metrics aggregated per company.
+      Includes volume, response timeliness, dispute rates,
+      and narrative opt-in counts.
+    columns:
+      - name: company
+        tests:
+          - not_null
+      - name: complaint_month
+        tests:
+          - not_null
+
+  - name: int_product_complaint_trends
+    description: >
+      Monthly complaint trends by product and sub-product.
+      Surfaces the most common issues and response patterns
+      for each product category.
+    columns:
+      - name: product
+        tests:
+          - not_null
+      - name: complaint_month
+        tests:
+          - not_null
+
+  - name: int_response_time_analysis
+    description: >
+      Quarterly response time distributions by company and
+      resolution type. Includes percentile metrics (p50, p90, p95)
+      for forwarding delays.
+    columns:
+      - name: company
+        tests:
+          - not_null
+      - name: complaint_quarter
+        tests:
+          - not_null

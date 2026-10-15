@@ -1,0 +1,23 @@
+# Snowflake connector
+snowflake-connector-python==3.12.3
+snowflake-sqlalchemy==1.6.1
+
+# Data processing
+pandas==2.2.3
+pyarrow==17.0.0
+
+# HTTP requests
+requests==2.32.3
+
+# Environment management
+python-dotenv==1.0.1
+
+# dbt with Snowflake adapter
+dbt-core==1.9.1
+dbt-snowflake==1.9.1
+
+# Testing
+pytest==8.3.4
+
+# Logging
+loguru==0.7.3

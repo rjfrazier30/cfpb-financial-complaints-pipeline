@@ -1,0 +1,35 @@
+name: 'cfpb_complaints'
+version: '1.0.0'
+config-version: 2
+
+profile: 'cfpb_complaints'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  cfpb_complaints:
+    staging:
+      +schema: staging
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +schema: intermediate
+      +materialized: table
+      +tags: ['intermediate']
+    marts:
+      +schema: marts
+      +materialized: table
+      +tags: ['marts']
+
+vars:
+  # Date range for filtering — adjust for development vs production
+  start_date: '2020-01-01'
