@@ -25,6 +25,8 @@ CREATE SCHEMA IF NOT EXISTS MARTS;        -- analytics-ready tables
 -- 4. Create the raw complaints table
 USE SCHEMA RAW;
 
+DROP TABLE IF EXISTS RAW_COMPLAINTS;
+
 CREATE TABLE IF NOT EXISTS RAW_COMPLAINTS (
     complaint_id            NUMBER          PRIMARY KEY,
     date_received           DATE,
@@ -61,3 +63,4 @@ GRANT ALL ON DATABASE CFPB_ANALYTICS TO ROLE SYSADMIN;
 GRANT ALL ON ALL SCHEMAS IN DATABASE CFPB_ANALYTICS TO ROLE SYSADMIN;
 
 SELECT 'Snowflake setup complete!' AS status;
+
