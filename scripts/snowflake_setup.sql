@@ -35,15 +35,15 @@ CREATE TABLE IF NOT EXISTS RAW_COMPLAINTS (
     consumer_complaint_narrative TEXT,
     company_public_response VARCHAR(512),
     company                 VARCHAR(256),
-    state                   VARCHAR(10),
-    zip_code                VARCHAR(10),
+    state                   VARCHAR(256),
+    zip_code                VARCHAR(256),
     tags                    VARCHAR(128),
     consumer_consent_provided VARCHAR(128),
     submitted_via           VARCHAR(64),
     date_sent_to_company    DATE,
     company_response        VARCHAR(256),
-    timely_response         VARCHAR(10),
-    consumer_disputed       VARCHAR(10),
+    timely_response         VARCHAR(256),
+    consumer_disputed       VARCHAR(256),
     _loaded_at              TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
 );
 
